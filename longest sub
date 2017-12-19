@@ -1,0 +1,16 @@
+class Solution {
+    public int LongestSubstringWithout(String s) {
+    int max=0;
+	HashMap<Character, Integer> res=new HashMap<Character, Integer>();
+	if(s.length()==0)return 0;
+    for(int i=0,j=0;i< s.length(); i++){
+		if(res.containsKey(s.charAt(i))){
+			j=Math.max(j,res.get(s.charAt(i))+1);			
+		}
+		res.put(s.charAt(i),i);
+		max=Math.max(max,i-j+1);
+	}
+	return max;
+		   
+    }
+}
